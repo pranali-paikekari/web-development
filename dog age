@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog age</title>
+    <style>
+        body{
+background-color:antiquewhite;
+            text-align: center;
+            margin: 50px;
+           padding: 20px;
+        }
+        h1{
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        input{
+            width: 200px;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border:2px solid black;
+            border-radius: 6px;
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color:coral;
+            color: white;
+            border:2px solid black;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+   <!-- <h1 >Dog Age Calculator</h1>-->
+    <h1 >Human to Dog Age Calculator</h1>
+    <form class="form">
+        
+        <input type="number" id="humanAge"  placeholder="Enter  human age">
+        <button onclick="calculateDogAge()" type="submit">Calculate</button>
+    </form>
+    <script>
+        function humanToDogAge(humanAge){
+            if(humanAge<=2){
+                return  humanAge*12;
+            }
+            else{
+                return (2*12)+((humanAge-2)*4);
+
+            }
+        }
+        function calculateDogAge(){
+            let humanAge=parseInt(document.getElementById("humanAge").value);
+            if (!isNaN(humanAge) && humanAge >= 0) {
+                let dogAge = humanToDogAge(humanAge);
+                alert(`The dog's age equivalent is ${dogAge} dog years.`);
+            } else {
+                alert("Please enter a valid human age.");
+            }
+        }
+    </script>
+
+</body>
+</html>
