@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828884.png">  <!-- Favicon -->
+   <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(315deg, #0f2027, #203a43, #2c5364); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quote-box {
+    width: 500px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 2px solid #02abec;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.title {
+    font-size: 24px;
+    color: #f0f0f0;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.break {
+    background: #02abec;
+    width: 60%;
+    height: 3px;
+    margin: 10px auto;
+}
+
+.quote {
+    font-size: 20px;
+    padding: 20px 0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote i {
+    font-size: 22px;
+   /* color: #ffcc00; */
+    color:white;
+    margin: 0 8px;
+}
+
+#author {
+    font-style: italic;
+    color: #d1d1d1;
+}
+
+.btns {
+    margin-top: 15px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.btn-copy {
+    background: #02abec;
+    color: white;
+    border: 2px solid #02abec;
+}
+
+.btn-copy:hover {
+    background: white;
+    color: #02abec;
+}
+
+.btn-generate {
+    background: white;
+    color: black;
+    border: 2px solid #02abec;
+}
+
+.btn-generate:hover {
+    background: #02abec;
+    color: white;
+}
+
+#copied-text {
+    display: none;
+    font-size: 14px;
+    color: #02abec;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+   </style>
+</head>
+<body>
+   
+    <div class="container">
+        <div class="quote-box">
+            <h2 class="title"><i class="fas fa-quote-left"></i> Random Quote</h2>
+            <hr class="break">
+            <div class="quote">
+                <i class="fa-solid fa-quote-left"></i>
+                <p id="text">"Success is getting what you want. Happiness is wanting what you get."</p>
+                <i class="fa-solid fa-quote-right"></i>
+            </div>
+            <p id="author">- Dale Carnegie</p>
+            <div class="btns">
+                <button class="btn btn-copy" onclick="copyQuote()">
+                    <i class="fa-solid fa-copy"></i> Copy Quote
+                </button>
+                <button class="btn btn-generate" onclick="generateQuote()">
+                    <i class="fa-solid fa-random"></i> New Quote
+                </button>
+            </div>
+            <p id="copied-text">✔ Quote Copied!</p>
+        </div>
+    </div>
+    <script >
+        const quotes = [
+    { text: "Success is getting what you want. Happiness is wanting what you get.", author: "Dale Carnegie" },
+    { text: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt" },
+    { text: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
+    { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+    { text: "Your time is limited, so don’t waste it living someone else’s life.", author: "Steve Jobs" },
+    { text: "Believe you can and you’re halfway there.", author: "Theodore Roosevelt" },
+    { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" },
+];
+
+function generateQuote() {
+    let randomIndex = Math.floor(Math.random() * quotes.length);
+    let textElement = document.getElementById("text");
+    let authorElement = document.getElementById("author");
+
+    // Add fade animation
+    textElement.style.opacity = "0";
+    authorElement.style.opacity = "0";
+
+    setTimeout(() => {
+        textElement.textContent = `"${quotes[randomIndex].text}"`;
+        authorElement.textContent = `- ${quotes[randomIndex].author}`;
+        
+        // Fade back in
+        textElement.style.opacity = "1";
+        authorElement.style.opacity = "1";
+    }, 300);
+}
+
+function copyQuote() {
+    const quoteText = document.getElementById("text").textContent;
+    const quoteAuthor = document.getElementById("author").textContent;
+    const fullQuote = `${quoteText} ${quoteAuthor}`;
+
+    navigator.clipboard.writeText(fullQuote).then(() => {
+        let copiedText = document.getElementById("copied-text");
+        copiedText.style.display = "block";
+
+        setTimeout(() => {
+            copiedText.style.display = "none";
+        }, 2000);
+    }).catch(err => {
+        console.error("Error copying text: ", err);
+    });
+}
+
+    </script>
+</body>
+</html>
