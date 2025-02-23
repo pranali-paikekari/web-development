@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number gusseing game</title>
+    <style>
+        body {
+          padding: 150px;
+            background:linear-gradient( to right ,red,yellow,pink);
+        }
+        #container {
+          
+            margin: auto;
+            
+           background-color: #0E2431;
+           border: 5px solid #F5E4C3;
+            border-radius: 10px;
+            height: 275px;
+            width: 750px;
+            text-align: center;
+        }
+       p{
+        color: white;
+        font-size: 25px;
+       }
+#userInput{
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    margin: 10px auto auto 25px;
+   
+
+}
+#btn{
+    width: 100px;
+    height: 40px;
+    background-color: #F5E4C3;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto;
+    font-size: 20px;
+    transition: background-color 0.3s ease-in-out;
+   
+}
+
+.again {
+            display: block;
+            width: 120px;
+            height: 40px;
+            background-color: #F5E4C3;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s ease-in-out;
+            margin: auto; /* Center on a new line */
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+        
+        <p>Guess a number between 1 and 100. Try to guess it.</p>
+       <p id="optest">Enter a number below</p>
+       <input type="number" id="userInput" placeholder="Enter a number">
+       <button id="btn" onclick="">Enter </button>
+       <button class="again" onclick="restartGame()">Play Again</button>
+      
+    </div>
+
+
+    <script>
+        let btn = document.getElementById('btn');
+        let output = document.getElementById('optest');
+        let number = Math.floor(Math.random() * 100) + 1;
+
+        btn.addEventListener("click", function () {
+            let input = parseInt(document.getElementById("userInput").value);
+
+            if (isNaN(input) || input < 1 || input > 100) {
+                output.innerHTML = "Please enter a valid number between 1 and 100!";
+                return;
+            }
+
+            if (input === number) {
+                output.innerHTML = `You guessed right! Your number was ${number}. `;
+                output.style.color = "green";
+            } else if (input < number) {
+                output.innerHTML = "You guessed too low, try again!";
+                output.style.color = "orange";
+            } else {
+                output.innerHTML = "You guessed too high, try again!";
+                output.style.color = "orange";
+            }
+        });
+        function restartGame() {
+            number = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("userInput").value = "";
+            output.innerHTML = "Enter a number below";
+            output.style.color = "white";
+        }
+    </script>
+</body>
+</html>
