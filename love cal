@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator</title>
+    <style>
+    /* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff6b81, #ff4757, #ff7f50); /* Romantic gradient */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Floating Hearts Animation */
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-20px); opacity: 0.8; }
+}
+
+body::before {
+    content: "❤️ ❤️ ❤️";
+    font-size: 50px;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: float 2s infinite alternate ease-in-out;
+}
+
+/* Card Container */
+.container {
+    width: 400px;
+    padding: 25px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Love Icon */
+img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Heading */
+h1 {
+    font-size: 36px;
+    color: #e63946;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Fields */
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ff4757;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #ff6b81;
+    box-shadow: 0 0 10px rgba(255, 107, 129, 0.5);
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #ff4757, #ff6b81);
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ff6b81, #ff4757);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+/* Love Percentage Result */
+#result {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: 0.5s;
+}
+
+/* Result Colors */
+.strong-love {
+    color: red;
+    font-weight: bolder;
+}
+
+.average-love {
+    color: #EB5B00;
+}
+
+.weak-love {
+    color: green;
+}
+
+     
+
+        </style>
+</head>
+<body>
+
+<div class="container">
+<h1>Love Calculator <img src="love.jpg" ></h1>
+<p>Enter two names to calculate your love percentage!</p>
+
+<label  class="name" for="name1">Your Name:</label>
+<input type="text" id="name1" placeholder="Your name">
+<br><br>
+<label for="name2">Partner's Name:</label>
+<input type="text" id="name2" placeholder="Partner's name">
+<br><br>
+<button onclick="calculateLove()">Calculate Love Percentage</button>
+
+<h2 id="result"></h2>
+</div>
+
+<script>
+  function calculateLove() {
+    var name1 = document.getElementById('name1').value;
+    var name2 = document.getElementById('name2').value;
+
+    name1 = name1.replace(/\s/g, '').toLowerCase();
+    name2 = name2.replace(/\s/g, '').toLowerCase();
+
+    var lovePercentage = Math.floor(Math.random() * 100) + 1;
+    var resultText = "Your love percentage is " + lovePercentage + "%!";
+
+    var resultElement = document.getElementById('result');
+    resultElement.innerHTML = resultText;
+
+    
+    if (lovePercentage > 80) {
+
+        resultElement.style.color = "red"; 
+        resultElement.style.fontWeight="bolder"                 // Strong love
+    } else if (lovePercentage > 50) {
+        resultElement.style.color = "#EB5B00"; // Average love
+    } else {
+        resultElement.style.color = "green";    // Weak love
+    }
+}
+
+    
+   
+    
+  
+</script>
+
+</body>
+</html>
