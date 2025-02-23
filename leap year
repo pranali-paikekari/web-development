@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap Year Checker</title>
+    <style>
+        /* Body Styling with Gradient Background */
+        body {
+            font-family: 'Poppins', sans-serif;
+           /* background: linear-gradient(135deg, #4facfe, #00f2fe); */
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container (div) Styling */
+        .container {
+            text-align: center;
+            padding: 30px;
+            background: rgb(231, 187, 231);
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            animation: fadeIn 1s ease-in-out;
+            border: 2px solid #4facfe;
+            position: relative;
+        }
+
+        /* Adding glow effect */
+        .container:hover {
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+            transform: scale(1.02);
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Title Styling */
+        h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Leap Year Image Styling */
+        img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        /* Input Styling */
+        input {
+            width: 80%;
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.3);
+            outline: none;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #ff4b2b, #ff416c);
+            transform: translateY(-2px);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Result Styling */
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            color: #444;
+        }
+
+        #result.show {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Decorative symbols */
+        .decor {
+            font-size: 40px;
+            color: #ff4b2b;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+        }
+        
+        .decor2 {
+            font-size: 40px;
+            color: #4facfe;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .container {
+                max-width: 90%;
+                padding: 20px;
+            }
+            button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <span class="decor"></span>
+    <h1>✨ Leap Year Checker ✨</h1>
+    <img src="leap.jpg" alt="Leap Year">
+    <p>Enter a year to check if it's a leap year or not.</p>
+
+    <label for="year">📅 Enter Year:</label>
+    <input type="number" id="year" placeholder="Enter a year">
+    <br><br>
+    <button onclick="checkLeapYear()" id="checkBtn">🔍 Check Leap Year</button>
+
+    <h2 id="result"></h2>
+    <span class="decor2"></span>
+</div>
+
+<script>
+    function checkLeapYear() {
+        var yearInput = document.getElementById('year');
+        var result = document.getElementById('result');
+        var button = document.getElementById('checkBtn');
+        var year = parseInt(yearInput.value);
+
+        if (isNaN(year) || year <= 0) {
+            result.innerHTML = "❌ Please enter a valid year!";
+            result.style.color = "red";
+            result.classList.add("show");
+            return;
+        }
+
+        // Add a loading effect
+        button.innerHTML = "⏳ Checking...";
+        button.disabled = true;
+
+        setTimeout(() => {
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                result.innerHTML = `🎉 ${year} is a Leap Year! ✅`;
+                result.style.color = "green";
+            } else {
+                result.innerHTML = `❌ ${year} is NOT a Leap Year!`;
+                result.style.color = "red";
+            }
+            result.classList.add("show");
+            button.innerHTML = "🔍 Check Leap Year";
+            button.disabled = false;
+        }, 1000);
+    }
+</script>
+</body>
+</html>
