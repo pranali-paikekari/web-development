@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+  
+    background: linear-gradient(to right,70, #ff9a9e, #fad0c4);
+    color: black;
+            text-align: center;
+    text-align: center;
+    padding: 20px;
+}
+.container{
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    
+    background: rgba(255, 228, 225, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-align: left;
+    max-width: 500px;
+    width: 100%;}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff758c, #ff7eb3 ); 
+    
+    color: black;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 235, 238, 0.9); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-align: left;
+    max-width: 500px;
+    width: 100%;
+}
+/*
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff4e50, #f9d423); /
+    color: black;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 220, 220, 0.9); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-align: left;
+    max-width: 500px;
+    width: 100%;
+}
+*/
+input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #dc3545;
+}
+    
+.container{
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    
+    background: rgba(255, 228, 225, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-align: left;
+    max-width: 500px;
+    width: 100%;
+
+}
+        h1 {
+            color: #d35400;
+        }
+
+        h2 {
+            color: red;
+        }
+
+        h3.success {
+            color: green;
+            font-size: 20px;
+            font-weight: bold;
+           
+            background-color: #d4edda;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        h3.failure {
+            color: #721c24;
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        input[type="submit"], .retry-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        input[type="submit"]:hover, .retry-btn:hover {
+            background-color: #218838;
+        }
+        label {
+    display: block;
+    margin: 5px 0;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dictionary Quiz 📖✨</h1>
+        <form method="POST">
+            <h3>1. What does "Ephemeral" mean?</h3>
+            <label><input type="radio" name="ephemeral" value="A"> A) Lasting for a very short time</label><br>
+            <label><input type="radio" name="ephemeral" value="B"> B) A kind of tree</label><br>
+            <label><input type="radio" name="ephemeral" value="C"> C) A large bird</label><br>
+            <label><input type="radio" name="ephemeral" value="D"> D) A type of fabric</label><br><br>
+            
+            <h3>2. What does "Irascible" mean?</h3>
+            <label><input type="radio" name="irascible" value="A"> A) Easily angered</label><br>
+            <label><input type="radio" name="irascible" value="B"> B) Having a good sense of humor</label><br>
+            <label><input type="radio" name="irascible" value="C"> C) Extremely tall</label><br>
+            <label><input type="radio" name="irascible" value="D"> D) Very calm</label><br><br>
+
+            <h3>3. What does "Cacophony" mean?</h3>
+            <label><input type="radio" name="cacophony" value="A"> A) A pleasant, harmonious sound</label><br>
+            <label><input type="radio" name="cacophony" value="B"> B) A harsh, discordant mixture of sounds</label><br>
+            <label><input type="radio" name="cacophony" value="C"> C) A type of plant</label><br>
+            <label><input type="radio" name="cacophony" value="D"> D) A kind of dance</label><br><br>
+
+            <h3>4. What does "Pernicious" mean?</h3>
+            <label><input type="radio" name="pernicious" value="A"> A) Very harmful in a subtle way</label><br>
+            <label><input type="radio" name="pernicious" value="B"> B) A deep sea creature</label><br>
+            <label><input type="radio" name="pernicious" value="C"> C) An expensive kind of clothing</label><br>
+            <label><input type="radio" name="pernicious" value="D"> D) A historical event</label><br><br>
+
+            <h3>5. What does "Luminous" mean?</h3>
+            <label><input type="radio" name="luminous" value="A"> A) Producing light</label><br>
+            <label><input type="radio" name="luminous" value="B"> B) Difficult to understand</label><br>
+            <label><input type="radio" name="luminous" value="C"> C) Very dark</label><br>
+            <label><input type="radio" name="luminous" value="D"> D) Of great height</label><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $answers = [
+                'ephemeral' => 'A',
+                'irascible' => 'A',
+                'cacophony' => 'B',
+                'pernicious' => 'A',
+                'luminous' => 'A'
+            ];
+            
+            $score = 0;
+            foreach ($answers as $question => $correct) {
+                if (isset($_POST[$question]) && $_POST[$question] == $correct) {
+                    $score++;
+                }
+            }
+            
+            echo "<h2>Your Score: $score / " . count($answers) . "</h2>";
+            
+            if ($score == count($answers)) {
+                echo "<h3 class='success'>🎉 Congratulations! You answered all questions correctly! 🎉</h3>";
+            } else {
+                echo "<h3 class='failure'>Good effort! Try again to improve your score.</h3>";
+            }
+            
+            echo '<br><br><a href="" class="retry-btn">Retry Quiz</a>';
+        }
+        ?>
+    </div>
+</body>
+</html>
