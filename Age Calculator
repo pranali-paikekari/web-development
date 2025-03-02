@@ -1,0 +1,165 @@
+<?php
+// Function to calculate age based on birthdate
+function calculateAge($birthdate) {
+    // Convert the birthdate to a DateTime object
+    $birthDate = new DateTime($birthdate);
+    $today = new DateTime(); // Get today's date
+    $age = $today->diff($birthDate); // Calculate the difference
+
+    return $age->y; // Return the age in years
+}
+
+// Check if the form is submitted
+if (isset($_POST['submit'])) {
+    $birthdate = $_POST['birthdate']; // Get the birthdate from the form
+    $age = calculateAge($birthdate); // Calculate age
+
+  
+  //  echo "Your age is: " . $age . " years old.";
+  echo "<p class='result'>Your age is: " . $age . " years old.</p>";
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style> 
+   /* body {
+    background: linear-gradient(to right, #00416A, #00A896); 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+#container {
+    background: #E0F7FA; 
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: #00334E; 
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="date"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #00707C; 
+}
+
+input[type="submit"] {
+    background: #00838F;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background: #005F66; 
+}
+
+p.result {
+    color: #006064; 
+    margin-top: 20px;
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: bold;
+}*/
+body {
+    background: linear-gradient(to right, #6A0572, #B565A7); /* Deep purple to lavender gradient */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+#container {
+    background: #F3E5F5; /* Soft lavender */
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: #4A0072; /* Deep purple */
+    text-align: center;
+}
+
+label {
+    color: #5A007A; /* Rich lavender */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="date"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #7A3E9D; /* Soft purple border */
+}
+
+input[type="submit"] {
+    background: #9C27B0; /* Medium lavender */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background: #7B1FA2; /* Darker lavender */
+}
+
+p.result {
+    color: #6A0572; /* Deep lavender */
+    margin-top: 20px;
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: bold;
+}
+
+       
+            
+ 
+
+   
+            
+
+    </style>  
+</head>
+<body>
+    <div id="container">
+
+<h2>Age Calculator</h2>
+
+<form method="POST">
+    <label for="birthdate">Enter Your Birthdate:</label>
+    <input type="date" id="birthdate" name="birthdate" required>
+    <input type="submit" name="submit" value="Calculate Age">
+</form>
+
+    </div> 
+
+</body>
+</html>
